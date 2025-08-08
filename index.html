@@ -6,8 +6,37 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welcome to TynArt</h1>
-    <p>Hand-made custom art delivered to your door. Pay on delivery.</p>
-    <button onclick="orderNow()">Order Now via WhatsApp</button>
+    <header>
+        <h1>Welcome to TynArt</h1>
+        <p>Hand-made custom art delivered to your door. Pay on delivery.</p>
+    </header>
+
+    <section class="gallery">
+        <!-- لوحة 1 -->
+        <div class="art-item">
+            <img src="https://via.placeholder.com/300x300" alt="Floral Dream">
+            <h3>Floral Dream</h3>
+            <p>30×40 cm | $35</p>
+            <button onclick="openOrder('Floral Dream', 35)">Order Now</button>
+        </div>
+
+        <!-- لوحة 2 -->
+        <div class="art-item">
+            <img src="https://via.placeholder.com/300x300" alt="City Sunset">
+            <h3>City Sunset</h3>
+            <p>40×50 cm | $45</p>
+            <button onclick="openOrder('City Sunset', 45)">Order Now</button>
+        </div>
+
+        <!-- لوحة 3 -->
+        <div class="art-item">
+            <img src="https://via.placeholder.com/300x300" alt="Ocean Wave">
+            <h3>Ocean Wave</h3>
+            <p>50×70 cm | $55</p>
+            <button onclick="openOrder('Ocean Wave', 55)">Order Now</button>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
 </body>
 </html>
