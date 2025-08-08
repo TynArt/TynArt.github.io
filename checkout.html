@@ -1,1 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout – TynArt</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Checkout</h1>
+    <form action="https://formspree.io/f/YOUR_ID" method="POST">
+        <label>Name: <input type="text" name="name" required></label><br>
+        <label>Phone (WhatsApp): <input type="tel" name="phone" required></label><br>
+        <label>Address: <input type="text" name="address" required></label><br>
+        <label>Artwork: <input type="text" name="artwork" id="art" readonly></label><br>
+        <label>Price: <input type="text" name="price" id="prc" readonly></label><br>
+        <label>Notes: <textarea name="notes"></textarea></label><br>
+        <button type="submit">Send Order</button>
+    </form>
 
+    <script>
+        const params = new URLSearchParams(location.search);
+        document.getElementById('art').value = params.get('title');
+        document.getElementById('prc').value = params.get('price');
+    </script>
+</body>
+</html>
