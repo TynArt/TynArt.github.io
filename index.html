@@ -9,27 +9,23 @@
   <header>
     <h1>Welcome to TynArt</h1>
     <p>Hand-made custom art delivered to your door. Pay on delivery.</p>
-    <!-- سلة التسوق -->
-<div id="cart" style="background:#fff3;border-radius:10px;padding:10px 20px;margin:1rem auto;max-width:300px;font-weight:bold;">
-  🛒 <span id="cartCount">0</span> items  |  Artwork: $<span id="artTotal">0</span>  |  
-  Shipping: <span id="shippingFee">0</span> JD  
-  <br><strong>Grand Total: $<span id="grandTotal">0</span> JD</strong>
-  <button onclick="clearCart()" style="margin-left:10px;background:#e74c3c;color:#fff;border:none;border-radius:15px;padding:4px 10px;font-size:.8rem;">Clear</button>
-</div>
 
-<!-- زر اختيار داخل/خارج عمان -->
-<div style="margin:.5rem auto;max-width:300px;">
-  <label style="margin-right:10px;">
-    <input type="radio" name="shipLocation" value="in" checked onchange="updateCart()"> داخل عمان
-  </label>
-  <label>
-    <input type="radio" name="shipLocation" value="out" onchange="updateCart()"> خارج عمان
-  </label>
-</div>
+    <!-- Mini-cart + Shipping -->
+    <div id="cart" class="cart-bar">
+      🛒 <span id="cartCount">0</span> items  |  Artwork: $<span id="artTotal">0</span>
+      &nbsp;|&nbsp; Shipping: <span id="shippingFee">3</span> JD
+      <br><strong>Grand Total: <span id="grandTotal">3</span> JD</strong>
+      <button onclick="clearCart()" class="btn-clear">Clear</button>
+    </div>
+
+    <!-- اختيار شحن -->
+    <div class="ship-chooser">
+      <label><input type="radio" name="shipLocation" value="in" checked onchange="updateCart()"> Amman 3 JD</label>
+      <label><input type="radio" name="shipLocation" value="out" onchange="updateCart()"> Out of Amman 4 JD</label>
+    </div>
   </header>
 
   <section class="gallery">
-    <!-- لوحة 1 -->
     <div class="art-item">
       <img src="https://via.placeholder.com/300x300" alt="Floral Dream">
       <h3>Floral Dream</h3>
@@ -37,7 +33,6 @@
       <button onclick="addToCart('Floral Dream',35)">Add to Cart</button>
     </div>
 
-    <!-- لوحة 2 -->
     <div class="art-item">
       <img src="https://via.placeholder.com/300x300" alt="City Sunset">
       <h3>City Sunset</h3>
@@ -45,7 +40,6 @@
       <button onclick="addToCart('City Sunset',45)">Add to Cart</button>
     </div>
 
-    <!-- لوحة 3 -->
     <div class="art-item">
       <img src="https://via.placeholder.com/300x300" alt="Ocean Wave">
       <h3>Ocean Wave</h3>
@@ -54,104 +48,31 @@
     </div>
   </section>
 
-  <!-- سكربت السلة -->
- <script>
-  let cart = [];
-
-  function addToCart(title, price) {
-    cart.push({title, price});
-    updateCart();
-  }
-
-  function clearCart() {
-    cart = [];
-    updateCart();
-  }
-
-  function updateCart() {
-    const count = cart.length;
-    const artTotal = cart.reduce((sum, item) => sum + item.price, 0);
-    const shipInside = document.querySelector('input[name="shipLocation"]:checked').value === 'in' ? 3 : 4;
-    const grandTotal = artTotal + shipInside;
-
-    document.getElementById('cartCount').textContent = count;
-    document.getElementById('artTotal').textContent = artTotal;
-    document.getElementById('shippingFee').textContent = shipInside;
-    document.getElementById('grandTotal').textContent = grandTotal;
-  }
-</script>
-
-  <!-- أيقونة واتساب العائمة -->
-  <a href="https://wa.me/96279xxxxxxx" style="position:fixed;bottom:20px;right:20px;background:#25D366;color:#fff;border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;font-size:28px;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.3);z-index:1000;">💬</a>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>TynArt – Custom Art Store</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <h1>Welcome to TynArt</h1>
-    <p>Hand-made custom art delivered to your door. Pay on delivery.</p>
-    <!-- سلة التسوق -->
-    <div id="cart" style="background:#fff3;border-radius:10px;padding:10px 20px;margin:1rem auto;max-width:300px;font-weight:bold;">
-      🛒 <span id="cartCount">0</span> items  |  Total: $<span id="cartTotal">0</span>
-      <button onclick="clearCart()" style="margin-left:10px;background:#e74c3c;color:#fff;border:none;border-radius:15px;padding:4px 10px;font-size:.8rem;">Clear</button>
-    </div>
-  </header>
-
-  <section class="gallery">
-    <!-- لوحة 1 -->
-    <div class="art-item">
-      <img src="https://via.placeholder.com/300x300" alt="Floral Dream">
-      <h3>Floral Dream</h3>
-      <p>30×40 cm | $35</p>
-      <button onclick="addToCart('Floral Dream',35)">Add to Cart</button>
-    </div>
-
-    <!-- لوحة 2 -->
-    <div class="art-item">
-      <img src="https://via.placeholder.com/300x300" alt="City Sunset">
-      <h3>City Sunset</h3>
-      <p>40×50 cm | $45</p>
-      <button onclick="addToCart('City Sunset',45)">Add to Cart</button>
-    </div>
-
-    <!-- لوحة 3 -->
-    <div class="art-item">
-      <img src="https://via.placeholder.com/300x300" alt="Ocean Wave">
-      <h3>Ocean Wave</h3>
-      <p>50×70 cm | $55</p>
-      <button onclick="addToCart('Ocean Wave',55)">Add to Cart</button>
-    </div>
-  </section>
-
-  <!-- سكربت السلة -->
+  <!-- سكربت واحد مختصر -->
   <script>
     let cart = [];
-
     function addToCart(title, price) {
       cart.push({title, price});
       updateCart();
     }
-
     function clearCart() {
       cart = [];
       updateCart();
     }
-
     function updateCart() {
-      const count = cart.length;
-      const total = cart.reduce((sum, item) => sum + item.price, 0);
-      document.getElementById('cartCount').textContent = count;
-      document.getElementById('cartTotal').textContent = total;
+      const artTotal = cart.reduce((s, i) => s + i.price, 0);
+      const isInside = document.querySelector('input[name="shipLocation"]:checked').value === 'in';
+      const shipping = isInside ? 3 : 4;
+      const grand = artTotal + shipping;
+
+      document.getElementById('cartCount').textContent = cart.length;
+      document.getElementById('artTotal').textContent = artTotal;
+      document.getElementById('shippingFee').textContent = shipping;
+      document.getElementById('grandTotal').textContent = grand;
     }
   </script>
 
-  <!-- أيقونة واتساب العائمة -->
-  <a href="https://wa.me/96279xxxxxxx" style="position:fixed;bottom:20px;right:20px;background:#25D366;color:#fff;border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;font-size:28px;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.3);z-index:1000;">💬</a>
+  <!-- أيقونة واتساب -->
+  <a href="https://wa.me/962799608639" class="whatsapp-float">💬</a>
 </body>
 </html>
-
