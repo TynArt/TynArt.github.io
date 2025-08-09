@@ -10,10 +10,22 @@
     <h1>Welcome to TynArt</h1>
     <p>Hand-made custom art delivered to your door. Pay on delivery.</p>
     <!-- سلة التسوق -->
-    <div id="cart" style="background:#fff3;border-radius:10px;padding:10px 20px;margin:1rem auto;max-width:300px;font-weight:bold;">
-      🛒 <span id="cartCount">0</span> items  |  Total: $<span id="cartTotal">0</span>
-      <button onclick="clearCart()" style="margin-left:10px;background:#e74c3c;color:#fff;border:none;border-radius:15px;padding:4px 10px;font-size:.8rem;">Clear</button>
-    </div>
+<div id="cart" style="background:#fff3;border-radius:10px;padding:10px 20px;margin:1rem auto;max-width:300px;font-weight:bold;">
+  🛒 <span id="cartCount">0</span> items  |  Artwork: $<span id="artTotal">0</span>  |  
+  Shipping: <span id="shippingFee">0</span> JD  
+  <br><strong>Grand Total: $<span id="grandTotal">0</span> JD</strong>
+  <button onclick="clearCart()" style="margin-left:10px;background:#e74c3c;color:#fff;border:none;border-radius:15px;padding:4px 10px;font-size:.8rem;">Clear</button>
+</div>
+
+<!-- زر اختيار داخل/خارج عمان -->
+<div style="margin:.5rem auto;max-width:300px;">
+  <label style="margin-right:10px;">
+    <input type="radio" name="shipLocation" value="in" checked onchange="updateCart()"> داخل عمان
+  </label>
+  <label>
+    <input type="radio" name="shipLocation" value="out" onchange="updateCart()"> خارج عمان
+  </label>
+</div>
   </header>
 
   <section class="gallery">
@@ -43,26 +55,31 @@
   </section>
 
   <!-- سكربت السلة -->
-  <script>
-    let cart = [];
+ <script>
+  let cart = [];
 
-    function addToCart(title, price) {
-      cart.push({title, price});
-      updateCart();
-    }
+  function addToCart(title, price) {
+    cart.push({title, price});
+    updateCart();
+  }
 
-    function clearCart() {
-      cart = [];
-      updateCart();
-    }
+  function clearCart() {
+    cart = [];
+    updateCart();
+  }
 
-    function updateCart() {
-      const count = cart.length;
-      const total = cart.reduce((sum, item) => sum + item.price, 0);
-      document.getElementById('cartCount').textContent = count;
-      document.getElementById('cartTotal').textContent = total;
-    }
-  </script>
+  function updateCart() {
+    const count = cart.length;
+    const artTotal = cart.reduce((sum, item) => sum + item.price, 0);
+    const shipInside = document.querySelector('input[name="shipLocation"]:checked').value === 'in' ? 3 : 4;
+    const grandTotal = artTotal + shipInside;
+
+    document.getElementById('cartCount').textContent = count;
+    document.getElementById('artTotal').textContent = artTotal;
+    document.getElementById('shippingFee').textContent = shipInside;
+    document.getElementById('grandTotal').textContent = grandTotal;
+  }
+</script>
 
   <!-- أيقونة واتساب العائمة -->
   <a href="https://wa.me/96279xxxxxxx" style="position:fixed;bottom:20px;right:20px;background:#25D366;color:#fff;border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;font-size:28px;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.3);z-index:1000;">💬</a>
@@ -137,3 +154,4 @@
   <a href="https://wa.me/96279xxxxxxx" style="position:fixed;bottom:20px;right:20px;background:#25D366;color:#fff;border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;font-size:28px;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.3);z-index:1000;">💬</a>
 </body>
 </html>
+
