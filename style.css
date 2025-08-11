@@ -1,82 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 :root{
-  --primary:#ff7b54;   /* كورال دافئ */
-  --secondary:#4f3a65; /* بنفسجي */
+  --primary:#ff7b54;
+  --secondary:#4f3a65;
   --bg:#fef9f3;
   --text:#2e2e2e;
-  --shadow:rgba(0,0,0,.08);
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif}
+body{background:linear-gradient(135deg,var(--bg),#f5e9e2);color:var(--text);text-align:center}
 
-body{
-  font-family:'Poppins',sans-serif;
-  background:linear-gradient(135deg,var(--bg) 0%,#f5e9e2 100%);
-  color:var(--text);
-  text-align:center;
-  direction:ltr;
-}
+header{background:linear-gradient(90deg,var(--primary),var(--secondary));color:#fff;padding:2.5rem 1rem}
+header h1{font-size:2.4rem;margin:0}
+header p{font-size:1.1rem;margin:.5rem 0 1rem}
 
-header{
-  background:linear-gradient(90deg,var(--primary),var(--secondary));
-  color:#fff;
-  padding:3rem 1rem;
-  box-shadow:0 4px 12px var(--shadow);
-}
+.cart-bar{background:#fff3;border-radius:10px;padding:10px 20px;margin:1rem auto;max-width:320px;font-weight:bold}
+.cart-btns{margin-top:5px}
+.btn-clear{background:#e74c3c;color:#fff;border:none;border-radius:15px;padding:4px 10px;font-size:.8rem;margin-right:5px}
+.btn-checkout{background:#4f3a65;color:#fff;border:none;border-radius:15px;padding:4px 10px;font-size:.8rem}
 
-header h1{font-size:2.5rem;letter-spacing:1px}
-header p{font-size:1.1rem;font-weight:300;margin-top:.5rem}
+.ship-chooser{margin:.5rem auto;max-width:320px;display:flex;justify-content:space-around;gap:10px}
 
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:2rem;
-  padding:3rem 2rem;
-}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;padding:2rem}
+.art-item{background:#fff;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.08);overflow:hidden;transition:.3s}
+.art-item:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.12)}
+.art-item img{width:100%;height:220px;object-fit:cover}
+.art-item h3{color:var(--secondary);margin:1rem 0 .5rem}
+.art-item p{font-weight:600;color:var(--primary)}
+button{background:linear-gradient(45deg,var(--primary),var(--secondary));color:#fff;border:none;padding:10px 28px;border-radius:25px;font-size:1rem;cursor:pointer;transition:.3s}
+button:hover{background:var(--secondary)}
 
-.art-item{
-  background:#fff;
-  border-radius:12px;
-  box-shadow:0 6px 20px var(--shadow);
-  overflow:hidden;
-  transition:transform .3s,box-shadow .3s;
-}
-
-.art-item:hover{
-  transform:translateY(-4px);
-  box-shadow:0 12px 30px var(--shadow);
-}
-
-.art-item img{
-  width:100%;
-  height:220px;
-  object-fit:cover;
-}
-
-.art-item h3{
-  margin:1rem 0 .5rem;
-  color:var(--secondary);
-  font-weight:600;
-}
-
-.art-item p{
-  margin:0 0 1rem;
-  font-weight:600;
-  color:var(--primary);
-}
-
-.art-item button{
-  background:linear-gradient(45deg,var(--primary),var(--secondary));
-  color:#fff;
-  border:none;
-  padding:10px 28px;
-  border-radius:25px;
-  font-size:1rem;
-  cursor:pointer;
-  transition:background .3s;
-}
-
-.art-item button:hover{
-  background:var(--secondary);
-}
+.whatsapp-float{position:fixed;bottom:20px;right:20px;background:#25D366;color:#fff;border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;font-size:28px;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.3);z-index:1000}
